@@ -26,7 +26,7 @@ namespace AutoAZ5
         {
             RegisterEvents();
             Instance = this;
-            Log.Info("Done registering events.");
+            Log.Debug("Done registering events.");
             // EXILED REQ
             base.OnEnabled(); // Call default implementation
         }
@@ -34,7 +34,7 @@ namespace AutoAZ5
         public override void OnDisabled()
         {
             UnregisterEvents();
-            Log.Info("Done unregistering events.");
+            Log.Debug("Done unregistering events.");
             // EXILED REQ
             base.OnDisabled(); // Call default implementation
         }
