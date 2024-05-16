@@ -16,7 +16,7 @@ namespace AutoAZ5
         public override string Name => "Auto AZ-5"; // The name of the plugin
         public override string Prefix => "auto_az5"; // Prefix for MyPlugin
         public override string Author => "ASIGSEGV"; // Author name
-        public override Version Version => new Version(1, 0, 0); // Plugin version
+        public override Version Version => new Version(1, 0, 1); // Plugin version
         public override PluginPriority Priority { get; } = PluginPriority.Default;
         public override Version RequiredExiledVersion { get; } = new Version(8, 8, 1); // Current Version of MINE
 
