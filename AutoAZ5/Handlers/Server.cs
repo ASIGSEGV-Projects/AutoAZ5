@@ -10,7 +10,7 @@ namespace AutoAZ5.Handlers
     {
         public void CallOffCoroutines()
         {
-            Log.Info($"Round restarting, killing a total of {util.DestroyOnRoundEnd.Count} coroutine(s).");
+            Log.Debug($"Round restarting, killing a total of {util.DestroyOnRoundEnd.Count} coroutine(s).");
             AutoWarhead.isAZ5Detonation = false;
             Timing.KillCoroutines(util.DestroyOnRoundEnd.ToArray());
             util.DestroyOnRoundEnd = new List<CoroutineHandle>();
@@ -19,7 +19,7 @@ namespace AutoAZ5.Handlers
         public void StartWarheadCount()
         {
             Config config = AutoAZ5.Instance.Config;
-            Log.Info($"Alpha-Warhead countdown for: {config.AutoWarheadDelay} seconds to detonation!");
+            Log.Debug($"Alpha-Warhead countdown for: {config.AutoWarheadDelay} seconds to detonation!");
             util.RoundCallDelayed(config.AutoWarheadDelay, () =>
             {
                 // boom boom time
