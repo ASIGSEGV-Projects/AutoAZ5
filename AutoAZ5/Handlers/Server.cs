@@ -12,6 +12,7 @@ namespace AutoAZ5.Handlers
         {
             Log.Debug($"Round restarting, killing a total of {util.DestroyOnRoundEnd.Count} coroutine(s).");
             AutoWarhead.isAZ5Detonation = false;
+            AutoAZ5.Instance.alphaWarheadExecuted = false;
             Timing.KillCoroutines(util.DestroyOnRoundEnd.ToArray());
             util.DestroyOnRoundEnd = new List<CoroutineHandle>();
         }

@@ -14,6 +14,7 @@ namespace AutoAZ5.Package
         
         public static void PlayCassieWarning(Config config)
         {
+            if (AutoAZ5.Instance.alphaWarheadExecuted) return;
             if (!shouldContinue()) return; // Warhead doesn't meet criteria to detonate.
             if(config.AutoWarheadWarningCassieOverrides) Cassie.Clear();
             if (config.AutoWarheadWarningCassie.IsEmpty())
@@ -22,6 +23,7 @@ namespace AutoAZ5.Package
                 EngageAW(config);
                 return;
             }
+            AutoAZ5.Instance.alphaWarheadExecuted = true;
             float Duration = Exiled.API.Features.Cassie.CalculateDuration(config.AutoWarheadWarningCassie) + config.CassieWarningDelay;
             Exiled.API.Features.Cassie.MessageTranslated(
                 config.AutoWarheadWarningCassie, 

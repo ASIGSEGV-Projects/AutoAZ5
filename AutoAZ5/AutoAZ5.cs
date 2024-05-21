@@ -21,6 +21,7 @@ namespace AutoAZ5
         public override Version RequiredExiledVersion { get; } = new Version(8, 8, 1); // Current Version of MINE
 
         private Handlers.Server ServerHandler = null!;
+        public bool alphaWarheadExecuted = false;
 
         public override void OnEnabled()
         {
