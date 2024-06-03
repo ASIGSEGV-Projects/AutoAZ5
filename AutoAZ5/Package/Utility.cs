@@ -8,7 +8,6 @@ namespace AutoAZ5.Package
     {
         // Timing
         public static List<CoroutineHandle> DestroyOnRoundEnd = new List<CoroutineHandle>();
-
         public static void RoundCallDelayed(float delay, Action action)
         {
             DestroyOnRoundEnd.Add(Timing.CallDelayed(delay,action));

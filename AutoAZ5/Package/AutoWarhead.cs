@@ -1,6 +1,16 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Exiled.API.Features;
+using MapGeneration;
+using MEC;
 using PluginAPI.Core;
+using UnityEngine;
+using Cassie = PluginAPI.Core.Cassie;
+using Map = PluginAPI.Core.Map;
 using Player = Exiled.API.Features.Player;
+using Round = PluginAPI.Core.Round;
+using Warhead = PluginAPI.Core.Warhead;
 
 namespace AutoAZ5.Package
 {
@@ -30,7 +40,17 @@ namespace AutoAZ5.Package
                 config.AutoWarheadWarningCassieSubtitles.IsEmpty() ? "" : config.AutoWarheadWarningCassieSubtitles, 
                 true // always true no matter what????
             );
+            Timing.RunCoroutine(FlickerLightsToRed());
             Utility.RoundCallDelayed(Duration, () => EngageAW(config));
+        }
+        static IEnumerator<float> FlickerLightsToRed()
+        {
+            yield return Timing.WaitForSeconds(5.0f);
+            foreach (RoomLightController instance in RoomLightController.Instances)
+                instance.ServerFlickerLights(3.5f);
+            yield return Timing.WaitForSeconds(3.0f);
+            foreach (RoomLightController instance in RoomLightController.Instances)
+                instance.NetworkOverrideColor = Color.red;
         }
 
         private static void EngageAW(Config config)
